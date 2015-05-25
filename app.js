@@ -43,7 +43,7 @@ function load_index (path) {
     }
 }
 
-app.get(/^(\/\~|\~)([a-zA-Z0-9])(\/$|$|\/(.+)$)/, function (req, res) {
+app.get(/^(\/\~|\~)([a-zA-Z0-9]+)(\/$|$|\/(.+)$)/, function (req, res) {
     var user = req.params[2].toLowerCase(),
         path = req.params[4],
         base = '/home/students/' + user + '/public_html';
