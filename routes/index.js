@@ -64,7 +64,7 @@ router.get(/^(\/\~|\~)([a-zA-Z0-9]+)(\/$|$|\/(.+)$)/, function (req, res) {
                     }
                 });
             } else {
-                load_index(base);
+                load_index(base, res);
             }
         }
     });
