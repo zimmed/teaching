@@ -36,6 +36,7 @@ router.get(/^(\/\~|\~)([a-zA-Z0-9]+)(\/$|$|\/(.+)$)/, function (req, res) {
         base = '/home/students/' + user + '/public_html';
     fs.exists(base, function (exists) {
         if (!exists) {
+            console.log(req.params);
             var error = new Error('Not Found');
             error.status = 404;
             res.render('error', {
