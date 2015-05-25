@@ -47,6 +47,7 @@ router.get(/^(\/\~|\~)([a-zA-Z0-9]+)(\/$|$|\/(.+)$)/, function (req, res) {
             if (path && path.length > 0) {
                 fs.stats(base + '/' + path, function (err, stats) {
                     if (stats && stats.isFile()) {
+                        console.log('sending: ' + base + '/' + path)
                         res.sendFile(base + '/' + path);
                     } else if (stats && stats.isDirectory()) {
                         load_index(base + '/' + path, res);
