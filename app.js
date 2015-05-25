@@ -5,8 +5,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-var routes = require('./routes/index');
-var users = require('./routes/users');
+var index = require('./routes/index');
 
 var app = express();
 
@@ -22,8 +21,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', routes);
-app.use('/users', users);
+app.use('/', index);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -56,5 +54,10 @@ app.use(function(err, req, res, next) {
   });
 });
 
+/** Temporary driver **/
+
+var server = app.listen(8088, function () {
+    console.log("Server started at " + server.address().address + " : " + server.address().port);
+});
 
 module.exports = app;
