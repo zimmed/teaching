@@ -45,7 +45,7 @@ router.get(/^(\/\~|\~)([a-zA-Z0-9]+)(\/$|$|\/(.+)$)/, function (req, res) {
         } else {
             if (path) path = path.replace(/\.\.\//g, '');
             if (path && path.length > 0) {
-                fs.stats(base + '/' + path, function (err, stats) {
+                fs.stat(base + '/' + path, function (err, stats) {
                     if (stats && stats.isFile()) {
                         console.log('sending: ' + base + '/' + path)
                         res.sendFile(base + '/' + path);
