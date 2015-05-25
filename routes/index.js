@@ -10,16 +10,16 @@ router.get('/', function(req, res, next) {
 
 /* STUDENT HOMEPAGES */
 
-function load_index (path) {
+function load_index (path, res) {
     if (path && path.charAt(path.length - 1) !== '/') path += '/';
     if (fs.existsSync(path + 'index.html')) {
-        fs.sendFile(path + 'index.html');
+        res.sendFile(path + 'index.html');
     } else if (fs.existsSync(path + 'index.htm')) {
-        fs.sendFile(path + 'index.htm');
+        res.sendFile(path + 'index.htm');
     } else if (fs.existsSync(path + 'default.html')) {
-        fs.sendFile(path + 'default.html');
+        res.sendFile(path + 'default.html');
     } else if (fs.existsSync(path + 'default.htm')) {
-        fs.sendFile(path + 'default.htm');
+        res.sendFile(path + 'default.htm');
     } else {
         var error = new Error('Not Found');
         error.status = 404;
